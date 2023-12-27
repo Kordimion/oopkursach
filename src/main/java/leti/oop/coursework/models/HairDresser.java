@@ -9,6 +9,7 @@ public class HairDresser {
 
     private boolean isMaster;
     private BooleanProperty isBusy = new SimpleBooleanProperty(false);
+    private Customer customer;
     private double customerProcessingTimeInSeconds;
 
     public static HairDresser createMaster() {
@@ -20,6 +21,10 @@ public class HairDresser {
 
     public boolean getIsBusy() {
         return isBusy.get();
+    }
+
+    public Customer getProcessingCustomer() {
+        return customer;
     }
 
     public boolean getIsMaster() {
@@ -37,14 +42,20 @@ public class HairDresser {
         return res;
     }
 
+    public void finishHairDressing() {
+        if(customer != null) customer.finishHairDressing();
+        isBusy.set(false);
+        this.customer = null;
+    }
+
     public Customer processCustomer(Customer customer) {
+        this.customer = customer;
 
         ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
 
         isBusy.set(true);
         customer.startHairDressing();
-        exec.schedule(customer::finishHairDressing, (long) customerProcessingTimeInSeconds, TimeUnit.SECONDS);
-        isBusy.set(false);
+        exec.schedule(this::finishHairDressing, (long) customerProcessingTimeInSeconds, TimeUnit.SECONDS);
 
         return customer;
     }

@@ -2,26 +2,25 @@ package leti.oop.coursework.models;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
 public class WaitingRoom {
 
     private static final int INITIAL_CAPACITY = 5;
-    private ArrayList<Customer> chairs = new ArrayList<>(WaitingRoom.INITIAL_CAPACITY);
-    private IntegerProperty maxChairs = new SimpleIntegerProperty(WaitingRoom.INITIAL_CAPACITY);
-    private IntegerProperty currentChairs = new SimpleIntegerProperty(0);
+    public ObservableList<Customer> chairs = FXCollections.observableArrayList();
+    public IntegerProperty maxChairs = new SimpleIntegerProperty(WaitingRoom.INITIAL_CAPACITY);
+    public IntegerProperty currentChairs = new SimpleIntegerProperty(0);
 
     public Integer searchForChair(Customer customer) {
-        chairs.add(customer);
-        for(int i = 0; i < maxChairs.get(); ++i) {
-            if(chairs.get(i) == null) {
-                chairs.set(i, customer);
-                currentChairs.add(1);
-                return i;
-            }
+        if(chairs.size() < maxChairs.get()) {
+            chairs.add(customer);
+            return chairs.size();
         }
-        return null;
+        else
+            return null;
     }
 
     public void resize(int newSize) {

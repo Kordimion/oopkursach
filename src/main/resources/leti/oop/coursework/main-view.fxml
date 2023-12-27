@@ -1,141 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Button?>
-<BorderPane prefHeight="800" prefWidth="1200" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leti.oop.coursework.MainController">
+<BorderPane prefHeight="800" prefWidth="1200" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leti.oop.coursework.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <top>
         <VBox alignment="CENTER">
-            <Text text="Hair salon management program">
+            <Text text="Программа управления парикмахерской">
             <font>
                <Font size="24.0" />
             </font>
+            <VBox.margin>
+               <Insets bottom="32.0" />
+            </VBox.margin>
             </Text>
         </VBox>
     </top>
-    <left>
-        <VBox alignment="TOP_CENTER">
-            <Text text="Model">
-                <font>
-                    <Font size="24.0" />
-                </font>
-            </Text>
-        </VBox>
-    </left>
     <center>
-        <HBox>
-            <VBox alignment="TOP_CENTER">
-                <padding>
-                    <Insets left="20.0" />
-                </padding>
-                <Text text="Interface">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Text>
-                <Accordion>
-                    <panes>
-                        <TitledPane text="события">
-                            <Accordion>
-                                <panes>
-                                    <TitledPane text="Парикмахерская">
-                                        <HBox>
-                                            <Button text="создать клиента" />
-                                            <TextField fx:id="newClientName" />
-                                        </HBox>
-                                    </TitledPane>
-                                    <TitledPane text="Парикмахер">
-                                        <VBox fx:id="hairdressersVbox"/>
-                                    </TitledPane>
-                                    <TitledPane text="Клиент">
-                                        <VBox fx:id="clientsVbox"/>
-                                    </TitledPane>
-                                    <TitledPane text="Комната ожидания">
-                                        <VBox fx:id="chairsVbox"/>
-                                    </TitledPane>
-                                </panes>
-                            </Accordion>
-                        </TitledPane>
-                        <TitledPane text="состояние объектов">
-                            <Accordion>
-                                <panes>
-                                    <TitledPane text="Парикмахерская">
+        <HBox alignment="CENTER" spacing="40">
+            <VBox spacing="20">
+                <Text text="Парикмахерская" textAlignment="RIGHT">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
 
-                                    </TitledPane>
-                                    <TitledPane text="Парикмахер">
+                <Text text="Параметры" />
+                <VBox spacing="10">
+                    <Label>Количество мастеров:</Label>
+                    <TextField fx:id="mastersAmount" />
+                </VBox>
+                <VBox spacing="10">
+                    <Label>Количество учеников:</Label>
+                    <TextField fx:id="apprenticesAmount" />
+                </VBox>
 
-                                    </TitledPane>
-                                    <TitledPane text="Клиент">
-                                        <VBox fx:id="clientsState"/>
-                                    </TitledPane>
-                                    <TitledPane text="Комната ожидания">
-                                        <VBox fx:id="chairsState"/>
-                                    </TitledPane>
-                                </panes>
-                            </Accordion>
-                        </TitledPane>
-                        <TitledPane text="Параметры">
-                            <Accordion>
-                                <panes>
-                                    <TitledPane text="Парикмахерская">
-                                        <VBox spacing="10">
-                                            <HBox spacing="10">
-                                                <Label>Количество мастеров:</Label>
-                                                <TextField fx:id="mastersAmount"/>
-                                                <Label>Количество учеников:</Label>
-                                                <TextField fx:id="apprenticesAmount" />
-                                            </HBox>
-                                        </VBox>
-                                    </TitledPane>
-                                    <TitledPane text="Парикмахер">
-                                        <VBox spacing="10">
-                                            <HBox spacing="10">
-                                                <Label>Время ожидания мастеров:</Label>
-                                                <TextField fx:id="mastersTime"/>
-                                                <Label>Время ожидания учеников:</Label>
-                                                <TextField fx:id="apprenticesTime" />
-                                            </HBox>
-                                        </VBox>
-                                    </TitledPane>
-                                    <TitledPane text="Клиент">
-                                        <VBox spacing="10">
-                                            <HBox spacing="10">
-                                                <Label>Количество учеников:</Label>
-                                                <RadioButton fx:id="prefersMasters" />
-                                            </HBox>
-                                        </VBox>
-                                    </TitledPane>
-                                    <TitledPane text="Комната ожидания">
-                                        <VBox spacing="10">
-                                            <HBox>
-                                                <Label>Количество стульев:</Label>
-                                                <TextField fx:id="chairsAmount" />
-                                            </HBox>
-                                        </VBox>
-                                    </TitledPane>
-                                </panes>
-                            </Accordion>
+                <Text text="События" />
+                <VBox spacing="10">
+                    <Label>Имя клиента</Label>
+                    <TextField fx:id="newClientName" />
+                    <Button text="создать клиента" VBox.vgrow="ALWAYS" fx:id="createClient"/>
+                </VBox>
 
-                        </TitledPane>
-
-                    </panes>
-
-                </Accordion>
             </VBox>
+            <VBox spacing="20">
+                <Text text="Парикмахеры">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
 
+                <Text text="Параметры" />
+                <VBox spacing="10">
+                    <Label>Время ожидания мастеров:</Label>
+                    <TextField fx:id="mastersTime" />
+                </VBox>
+                <VBox spacing="10">
+                    <Label>Время ожидания учеников:</Label>
+                    <TextField fx:id="apprenticesTime" />
+                </VBox>
+
+                <Text text="Состояние" />
+                <VBox fx:id="hairdressersState" />
+
+                <Text text="События" />
+                <VBox fx:id="hairdressersVbox" />
+
+            </VBox>
+            <VBox spacing="20">
+                <Text text="Комната ожидания">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+
+                <Text text="Параметры" />
+
+                <VBox spacing="10">
+                    <Label>Количество стульев</Label>
+                    <TextField fx:id="chairsAmount" />
+                </VBox>
+
+                <Text text="Состояние" />
+                <VBox fx:id="chairsState" />
+
+                <Text text="События" />
+                <VBox fx:id="chairsVbox" />
+            </VBox>
+            <VBox spacing="20">
+                <Text text="Клиенты">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+
+                <Text text="Параметры" />
+                <VBox spacing="10">
+                    <VBox spacing="10">
+                        <Label>Количество учеников:</Label>
+                        <RadioButton fx:id="prefersMasters" />
+                    </VBox>
+                </VBox>
+
+                <Text text="Состояние" />
+                <VBox fx:id="clientsState" />
+
+                <Text text="События" />
+                <VBox fx:id="clientsVbox" />
+
+            </VBox>
         </HBox>
     </center>
 </BorderPane>

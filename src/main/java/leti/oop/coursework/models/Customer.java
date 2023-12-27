@@ -2,10 +2,14 @@ package leti.oop.coursework.models;
 
 public class Customer {
     public enum CustomerState {
-        UNPROCESSED,
-        WAITING,
-        PROCESSING,
-        LEFT;
+        UNPROCESSED("клиент еще не подстрижен"),
+        WAITING("клиент ожидает"),
+        PROCESSING("клиента стригут"),
+        LEFT("клиент ушел");
+
+        CustomerState(String state) { res = state;};
+        private final String res;
+        public String getStatus() { return res; }
     }
 
     private CustomerState state = CustomerState.UNPROCESSED;
@@ -17,6 +21,10 @@ public class Customer {
 
     public String getCustomerId() {
         return customerId;
+    }
+
+    public CustomerState getState() {
+        return state;
     }
 
     public void setCustomerId(String newId) {
